@@ -16,14 +16,17 @@
 
 import pandas as pd
 import os
+import sys
+
+print(sys.path)
 
 pd.set_option('expand_frame_repr', False)  # 当列太多时显示完整
 
 # =====导入数据
-print(os.getcwd())
+# print(os.getcwd())
 current = os.getcwd()
 df = pd.read_csv(r'/Users/mac/Documents/Pandas/OKEX_20200302_5T.csv', skiprows=1, encoding='GBK')
-print(df)
+# print(df)
 
 # =====groupby常用操作汇总
 # 根据'candle_begin_time'进行group，将相同'交易日期'的行放入一个group，
@@ -36,7 +39,8 @@ print(df)
 
 
 # 获取其中某一个group
-# print(df.groupby('candle_begin_time').get_group('2018-01-24 00:00:00'))
+# print(type(df.groupby('candle_begin_time')))
+# print(df.groupby('candle_begin_time').get_group('2020-03-02 00:00:00'))  # 抽取了了一些行
 # print(df.groupby('symbol').get_group('BTCUSD'))
 
 
@@ -49,11 +53,14 @@ print(df)
 # print(df.groupby('symbol').nth(2))
 # 将group变量不设置为index
 # print(df.groupby('symbol', as_index=False).nth(2))
+# print(df.groupby('symbol', as_index=True).nth(2))
 
 
 # 在group之后，取一部分变量进行计算
 # 计算每个group的均值
-# print(df.groupby('symbol')['close', 'volume'].mean())
+print(df.groupby('symbol'))
+print(df.groupby('symbol')[['close', 'volume']])
+# print(df.groupby('symbol')[['close', 'volume']].mean())
 # 计算每个group的最大值
 # print(df.groupby('symbol')['close', 'volume'].max())
 
