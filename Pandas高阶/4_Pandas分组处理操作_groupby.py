@@ -15,12 +15,15 @@
 """
 
 import pandas as pd
+import os
 
 pd.set_option('expand_frame_repr', False)  # 当列太多时显示完整
 
 # =====导入数据
-df = pd.read_csv(r'C:\Users\Simons\Desktop\xbx_coin_2020\data\cls-3.2BITFINEX-1H-data-20180124.csv', skiprows=1)
-
+print(os.getcwd())
+current = os.getcwd()
+df = pd.read_csv(r'/Users/mac/Documents/Pandas/OKEX_20200302_5T.csv', skiprows=1, encoding='GBK')
+print(df)
 
 # =====groupby常用操作汇总
 # 根据'candle_begin_time'进行group，将相同'交易日期'的行放入一个group，
