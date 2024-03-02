@@ -85,7 +85,6 @@ print(df.groupby('symbol')[['close', 'volume']])
 
 # 遍历group，对每个group进行单独操作，然后将这些group合并起来。
 # 语法：for key, group in df.groupby('列名'):
-
 # for symbol, group in df.groupby('symbol'):
 #     print(symbol)
 #     print(group)
